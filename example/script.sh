@@ -1,0 +1,1 @@
+watchlog ./config.json

@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "watchlog"
+version = "0.1.1"
+description = "monitoring log files and sending parsed logs to a specified URL"
+authors = ["euraxluo <euraxluo@outlook.com>"]
+license = "The MIT LICENSE"
+readme = "README.md"
+homepage = "https://github.com/Euraxluo/watchlog"
+repository = "https://github.com/Euraxluo/watchlog"
+keywords = ["log monitor","loguru","watchdog"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+loguru = "^0.7.0"
+watchdog = "^3.0.0"
+asyncio = "^3.4.3"
+httpx = "^0.23.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+watchlog = 'watchlog.watchlog:cli'
