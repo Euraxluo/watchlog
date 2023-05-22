@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "watchlog"
-version = "0.1.1"
+version = "0.1.2"
 description = "monitoring log files and sending parsed logs to a specified URL"
 authors = ["euraxluo <euraxluo@outlook.com>"]
 license = "The MIT LICENSE"
@@ -15,6 +15,7 @@ loguru = "^0.7.0"
 watchdog = "^3.0.0"
 asyncio = "^3.4.3"
 httpx = "^0.23.3"
+requests = "^2.30.0"
 
 
 [build-system]

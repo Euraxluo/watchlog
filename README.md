@@ -1,7 +1,7 @@
-
 # watchlog
 
-`watchlog` is a Python package for monitoring log files and sending parsed logs to a specified URL using HTTP POST requests.
+`watchlog` is a Python package for monitoring log files and sending parsed logs to a specified URL using HTTP POST
+requests.
 
 - name = "watchlog"
 - description = "monitoring log files and sending parsed logs to a specified URL"
@@ -9,8 +9,6 @@
 - license = "The MIT LICENSE"
 - repository = "https://github.com/Euraxluo/watchlog"
 - version = "0.1.*"
-
-
 
 ## Installation
 
@@ -26,12 +24,15 @@ To use `watchlog`, you need to create a configuration file in JSON format. Here 
 
 ```json
 {
+  "check_interval": 5,
+  "check": true,
   "files": [
     {
       "path": "/path/to/log/file.log",
       "reg": "^(?P<time>[^ ]*) (?P<level>[^ ]*) (?P<module>[^ ]*) (?P<line>[^ ]*) (?P<message>.*)$",
       "url": "http://example.com/api/logs",
       "latest": true,
+      "enable": true,
       "headers": {
         "Content-Type": "application/json"
       },
@@ -48,26 +49,34 @@ To use `watchlog`, you need to create a configuration file in JSON format. Here 
 - `reg`: A regular expression used to parse the log file.
 - `url`: The URL to send the parsed logs to.
 - `latest`: Start monitoring from the latest logs.
+- `enable`: Indicates that this configuration will be enabled, which defaults to true.
 - `headers`: A dictionary of headers to include in the HTTP POST request.
 - `auth`: A dictionary with `username` and `password` keys for basic authentication.
+- `check`: if open check ,it will loop check the config file
+- `check_interval`: circle check interval time(s)
 
-Once you have created the configuration file, you can start monitoring the log file by calling the `start()` function from the `watchlog` module:
+Once you have created the configuration file, you can start monitoring the log file by calling the `start()` function
+from the `watchlog` module:
 
 ```python
 import asyncio
 from watchlog import start
+
 loop = asyncio.get_event_loop()
 loop.run_until_complete(start('path/to/config.json'))
 ```
 
 You can also use we provide small scripts
+
 ```bash
 watchlog path/to/config/file
 ```
 
-This will start monitoring the log file specified in the configuration file and sending parsed logs to the specified URL using HTTP POST requests.
+This will start monitoring the log file specified in the configuration file and sending parsed logs to the specified URL
+using HTTP POST requests.
 
 ## example
+
 example use zinc_observe as log search_engine,Illustrates the use of the process
 
 ```
@@ -78,7 +87,6 @@ example use zinc_observe as log search_engine,Illustrates the use of the process
 ├── log.log                 log file
 └── main.py                 main python file to monitor log file
 ```
-
 
 ## License
 

@@ -1,15 +1,29 @@
 {
-    "files": [
-        {
-            "path": "./data.log",
-            "reg": "(?P<time>\\d{8} \\d{2}:\\d{2}:\\d{2}.\\d{6}) (?P<process_id>[0-9]+) (?P<level>\\w+)\\s+(?P<msg>[\\s\\S]*?) - (?P<file>.*)\\:(?P<line>.*)",
-            "url": "http://localhost:5080/api/default/demo/_json",
-            "latest": false,
-            "auth": {
-                "username": "euraxluo@outlook.com",
-                "password": "E7FX751x5h4zq7Jh"
-            },
-            "headers": {}
-        }
-    ]
+  "check_interval": 5,
+  "check": true,
+  "files": [
+    {
+      "path": "./data.log",
+      "reg":"\\[(?P<time>[^\\]]+)\\]\\s+(?P<level>\\w+)\\s+\\[(?P<process_name>\\w+),(?P<process_id>[0-9]+),(?P<thread_name>\\w+),(?P<module>\\w+),(?P<function>\\w+)\\]\\s+(?P<line>[0-9]+) : (?P<msg>[\\s\\S]*?)",
+      "url": "http://localhost:5080/api/default/data_log/_json",
+      "latest": true,
+      "auth": {
+        "username": "euraxluo@outlook.com",
+        "password": "DE6jW9KjvXXuqquy"
+      },
+      "headers": {}
+    },
+    {
+      "path": "./data2.log",
+      "reg": "(?P<time>\\d{8} \\d{2}:\\d{2}:\\d{2}.\\d{6}) (?P<process_id>[0-9]+) (?P<level>\\w+)\\s+(?P<msg>[\\s\\S]*?) - (?P<file>.*)\\:(?P<line>.*)",
+      "url": "http://localhost:5080/api/default/data2_log/_json",
+      "latest": true,
+      "enable": false,
+      "auth": {
+        "username": "euraxluo@outlook.com",
+        "password": "DE6jW9KjvXXuqquy"
+      },
+      "headers": {}
+    }
+  ]
 }
