@@ -70,6 +70,10 @@ You can also use we provide small scripts
 
 ```bash
 watchlog path/to/config/file
+
+#or
+
+watchlog --parse path/to/log_file pattern_str
 ```
 
 This will start monitoring the log file specified in the configuration file and sending parsed logs to the specified URL
